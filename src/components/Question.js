@@ -1,45 +1,63 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helpers";
+import {
+  Grid,
+  Avatar,
+  Paper,
+  Card,
+  CardHeader,
+  CardMedia,
+  CardContent,
+  Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText
+} from "@material-ui/core";
 class Question extends Component {
   render() {
-    const { question } = this.props;
-    console.log(this.props);
+    const { question, author, mauthedUserDetails } = this.props;
+
     return (
-      <a className="question">
-        <div className="question-info"></div>
-        {/* <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
-<div className="tweet-info">
-<div>
-  <span>{name}</span>
-  <div>{formatDate(timestamp)}</div>
-  {parent && (
-    <button
-      className="replying-to"
-      onclick={e => this.toParent(e, parent.id)}
-    >
-      Replying to @{parent.author}
-    </button>
-  )}
-  <p>{text}</p>
-</div>
-<div className="tweet-icons">
-  <TiArrowBackOutline className="tweet-icon" />
-  <span>{replies !== 0 && replies}</span>
-  <button className="heart-button" onClick={this.handleLike}>
-    {hasLiked === true ? (
-      <TiHeartFullOutline
-        color="#e0245"
-        className="tweet-icon"
-      />
-    ) : (
-      <TiHeartOutline className="tweet-icon" />
-    )}
-  </button>
-  <span>{likes !== 0 && likes}</span>
-</div>
-</div> */}
-      </a>
+      <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+        <Card>
+          <CardHeader
+            avatar={
+              <Avatar aria-label="recipe" className="avatar">
+                R
+              </Avatar>
+            }
+            title="Shrimp and Chorizo Paella"
+            subheader="September 14, 2016"
+          />
+          <CardMedia className="media" image={null} title="Paella dish" />
+          <CardContent>
+            <Typography variant="headline" component="h2">
+              Would You Rather..
+            </Typography>
+            <List dense>
+              <ListItem>
+                <ListItemText>
+                  <Typography variant="headline" component="h3">
+                    {question.optionOne.text}
+                  </Typography>
+                </ListItemText>
+                <ListItemText>
+                  <Typography variant="headline" component="h2">
+                    OR
+                  </Typography>
+                </ListItemText>
+                <ListItemText>
+                  <Typography variant="headline" component="h3">
+                    {question.optionTwo.text}
+                  </Typography>
+                </ListItemText>
+              </ListItem>
+            </List>
+          </CardContent>
+        </Card>
+      </Grid>
     );
   }
 }

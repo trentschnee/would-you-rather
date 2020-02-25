@@ -2,23 +2,23 @@ import React from "react";
 import { handleInitialData } from "../actions/Shared";
 import { connect } from "react-redux";
 import Dashboard from "./Dashboard";
+import Container from "@material-ui/core/Container";
 
-// TODO:reword
 class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
   }
   render() {
     return (
-      <div className="container">
-        <Dashboard />
-      </div>
+      <Container>
+        {this.props.loading === true ? "LOADING" : <Dashboard />}
+      </Container>
     );
   }
 }
 
 function mapStateToProps({ authedUser }) {
-  return {};
+  //if the authed user is null, make the looking to true.
+  return { loading: authedUser === null };
 }
-
 export default connect(mapStateToProps)(App);
