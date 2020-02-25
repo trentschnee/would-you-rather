@@ -1,5 +1,5 @@
-import {combineReducers} from "redux";
+import { combineReducers } from "redux";
 import authedUser from "./AuthedUser";
-import Questions from "./Questions";
-import Users from "./Users";
-export default combineReducers({authedUser,Questions,Users})
+import questions from "./Questions";
+import users from "./Users";
+export default combineReducers({ authedUser, users, questions });
