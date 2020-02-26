@@ -3,15 +3,16 @@ import { handleInitialData } from "../actions/Shared";
 import { connect } from "react-redux";
 import Dashboard from "./Dashboard";
 import Container from "@material-ui/core/Container";
-
+import Navbar from "./Navbar"
 class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
   }
   render() {
     return (
+      
       <Container>
-        {this.props.loading === true ? "LOADING" : <Dashboard />}
+        {this.props.loading === true ? "LOADING" : <div><Navbar /><Dashboard /></div>}
       </Container>
     );
   }
