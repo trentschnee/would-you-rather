@@ -61,12 +61,12 @@ class Question extends Component {
                   <FormControl component="fieldset" className="formControl">
                     <RadioGroup aria-label="wyr" name="wyr">
                       <FormControlLabel
-                        value="female"
+                        value="optionOne"
                         control={<Radio color="default" />}
                         label={question.optionOne.text}
                       />
                       <FormControlLabel
-                        value="male"
+                        value="optionTwo"
                         control={<Radio color="default" />}
                         label={question.optionTwo.text}
                       />
