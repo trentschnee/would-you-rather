@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component, Fragment } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { handleInitialData } from "../actions/Shared";
 import { connect } from "react-redux";
-import Dashboard from "./Dashboard";
+import Home from "./Home";
 import { CssBaseline, createMuiTheme } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -28,7 +29,7 @@ class App extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <React.Fragment>
+      <Router>
         <ThemeProvider theme={theme}>
           {this.props.loading === true ? (
             "LOADING"
@@ -36,13 +37,15 @@ class App extends React.Component {
             <div>
               <Navbar />
               <CssBaseline />
-              <Container component="main" className={classes.container}>
-                <Dashboard />
-              </Container>
+              <main>
+                <Container component="main" className={classes.container}>
+                  <Route path="/" exact component={Home}></Route>
+                </Container>
+              </main>
             </div>
           )}
         </ThemeProvider>
-      </React.Fragment>
+      </Router>
     );
   }
 }

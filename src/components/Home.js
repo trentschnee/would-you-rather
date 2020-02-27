@@ -5,17 +5,17 @@ import { Grid } from "@material-ui/core";
 //maybe make into helpers
 
 import Question from "./Question";
-class Dashboard extends React.Component {
+class Home extends React.Component {
   state = {
     showAnswered: false
   };
   render() {
-    const { answeredQuestionIds, unansweredQuestionIds } = this.props;
+    const { answeredIds, unansweredIds } = this.props;
     return (
       <Grid container spacing={3}>
         {this.state.showAnswered === true
-          ? answeredQuestionIds.map(id => <Question key={id} id={id} />)
-          : unansweredQuestionIds.map(id => <Question key={id} id={id} />)}
+          ? answeredIds.map(id => <Question key={id} id={id} />)
+          : unansweredIds.map(id => <Question key={id} id={id} />)}
       </Grid>
     );
   }
@@ -24,17 +24,18 @@ class Dashboard extends React.Component {
 // Take the state of our store for questions
 // TODO: Reword
 function mapStateToProps({ questions, authedUser, users }) {
-  const answeredQuestionIds = Object.keys(users[authedUser].answers).sort(
+  // Get the list of answeredIds
+  const answeredIds = Object.keys(users[authedUser].answers).sort(
     (a, b) => questions[b].timestamp - questions[a].timestamp
   );
-  const unansweredQuestionIds = Object.keys(questions)
-    .filter(q => !answeredQuestionIds.includes(q))
+  const unansweredIds = Object.keys(questions)
+    .filter(q => !answeredIds.includes(q))
     .sort((a, b) => questions[b].timestamp - questions[a].timestamp);
 
   return {
-    answeredQuestionIds,
-    unansweredQuestionIds
+    answeredIds,
+    unansweredIds
   };
 }
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps)(Home);

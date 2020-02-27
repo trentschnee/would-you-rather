@@ -40,7 +40,7 @@ class Navbar extends React.Component {
             <Link
               variant="button"
               color="textPrimary"
-              href="#"
+              href="/"
               className={classes.link}
             >
               Home
