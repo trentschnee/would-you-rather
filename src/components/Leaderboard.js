@@ -23,6 +23,7 @@ function mapStateToProps({ users, authedUser }) {
         return { ...userSel, questionsAns, questionsAsked, totalScore };
       })
       .sort()
+      // TODO make the leadboard sort from higest to lowest
       .reverse()
   };
 }

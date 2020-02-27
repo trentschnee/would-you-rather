@@ -24,8 +24,8 @@ const useStyles = theme => ({
     maxWidth: 500
   },
   image: {
-    width: 128,
-    height: 128
+    width: 80,
+    height: 80
   },
   img: {
     margin: "auto",
@@ -38,44 +38,34 @@ const useStyles = theme => ({
 
 const Leaderboard = props => {
   const { userObj, classes } = props;
-  const { avatarURL, name } = userObj;
+  const {
+    questionsAnswered,
+    questionsAsked,
+    totalScore,
+    avatarURL,
+    name
+  } = userObj;
   return (
     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
       <Paper className={classes.paper}>
-        <Grid container spacing={2}>
+        <Grid container alignItems="center" justify="space-between" spacing={2}>
           <Grid item>
             <ButtonBase className={classes.image}>
               <img className={classes.img} alt="complex" src={avatarURL} />
             </ButtonBase>
+            <Typography>{name}</Typography>
           </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
-                  {name} Asks..
-                </Typography>
-                <Typography variant="body2" gutterBottom>
-                  Would You Rather:
-                </Typography>
-                <FormControl component="fieldset" className="formControl">
-                  <RadioGroup aria-label="wyr" name="wyr">
-                    <FormControlLabel
-                      value="optionOne"
-                      control={<Radio color="default" />}
-                      label={null}
-                    />
-                    <FormControlLabel
-                      value="optionTwo"
-                      control={<Radio color="default" />}
-                      label={null}
-                    />
-                  </RadioGroup>
-                </FormControl>
-              </Grid>
-              <Grid item>
-                <Button variant="contained">Submit</Button>
-              </Grid>
-            </Grid>
+          <Grid item>
+            <Typography gutterBottom>
+              Questions Asked: {questionsAsked}
+            </Typography>
+            <Typography gutterBottom>
+              Questions Answered: {questionsAnswered}
+            </Typography>
+          </Grid>
+
+          <Grid item>
+            <Avatar>{totalScore}</Avatar>
           </Grid>
         </Grid>
       </Paper>

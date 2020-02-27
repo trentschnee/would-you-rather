@@ -24,8 +24,8 @@ const useStyles = theme => ({
     maxWidth: 500
   },
   image: {
-    width: 128,
-    height: 128
+    width: 80,
+    height: 80
   },
   img: {
     margin: "auto",
