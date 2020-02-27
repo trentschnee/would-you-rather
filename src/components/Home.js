@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Grid } from "@material-ui/core";
 //maybe make into helpers
 
-import Question from "./Question";
+import QuestionCard from "./cards/Question";
 class Home extends React.Component {
   state = {
     showAnswered: false
@@ -14,8 +14,8 @@ class Home extends React.Component {
     return (
       <Grid container spacing={3}>
         {this.state.showAnswered === true
-          ? answeredIds.map(id => <Question key={id} id={id} />)
-          : unansweredIds.map(id => <Question key={id} id={id} />)}
+          ? answeredIds.map(id => <QuestionCard key={id} id={id} />)
+          : unansweredIds.map(id => <QuestionCard key={id} id={id} />)}
       </Grid>
     );
   }

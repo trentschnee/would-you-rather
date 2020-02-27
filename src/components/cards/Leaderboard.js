@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { withStyles } from "@material-ui/core/styles";
-import { formatQuestion } from "../utils/helpers";
+import { formatLeaderboard } from "../../utils/helpers";
 import {
   Grid,
   GridList,
@@ -35,9 +35,9 @@ const useStyles = theme => ({
     borderRadius: "50%"
   }
 });
-class Question extends Component {
+class Leaderboard extends Component {
   render() {
-    const { classes, question, author, mauthedUserDetails } = this.props;
+    const { classes, Leaderboard, author, mauthedUserDetails } = this.props;
     console.log(author);
     const { avatarURL, name } = author;
     return (
@@ -63,12 +63,12 @@ class Question extends Component {
                       <FormControlLabel
                         value="optionOne"
                         control={<Radio color="default" />}
-                        label={question.optionOne.text}
+                        label={Leaderboard.optionOne.text}
                       />
                       <FormControlLabel
                         value="optionTwo"
                         control={<Radio color="default" />}
-                        label={question.optionTwo.text}
+                        label={Leaderboard.optionTwo.text}
                       />
                     </RadioGroup>
                   </FormControl>
@@ -86,14 +86,14 @@ class Question extends Component {
 }
 // If you pass a companent that you are rendering, the prop will be the second argument.
 // TODO: Reword
-function mapStateToProps({ authedUser, users, questions }, { id }) {
-  const question = questions[id];
-  const author = question ? users[question.author] : "";
+function mapStateToProps({ authedUser, users, Leaderboards }, { id }) {
+  const Leaderboard = Leaderboards[id];
+  const author = Leaderboard ? users[Leaderboard.author] : "";
   const authedUserDetails = users[authedUser];
   return {
-    question,
+    Leaderboard,
     author,
     authedUserDetails
   };
 }
-export default connect(mapStateToProps)(withStyles(useStyles)(Question));
+export default connect(mapStateToProps)(withStyles(useStyles)(Leaderboard));

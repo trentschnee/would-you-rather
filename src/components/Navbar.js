@@ -48,7 +48,7 @@ class Navbar extends React.Component {
             <Link
               variant="button"
               color="textPrimary"
-              href="#"
+              href="/leaderboard"
               className={classes.link}
             >
               Leaderboard
