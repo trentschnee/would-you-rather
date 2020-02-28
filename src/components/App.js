@@ -19,8 +19,8 @@ const theme = createMuiTheme({
 const useStyles = theme => ({
   container: {
     paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8)
-  }
+    paddingBottom: theme.spacing(8),
+  },
 });
 
 class App extends React.Component {
@@ -39,13 +39,11 @@ class App extends React.Component {
             <div>
               <Navbar />
               <CssBaseline />
-              <main>
-                <Container component="main" className={classes.container}>
+         <Container className={classes.container}>
                   <Route path="/" exact component={Home}></Route>
                   <Route path="/question/:id" component={QuestionPage}/>
                   <Route path="/leaderboard" component={Leaderboard} />
-                </Container>
-              </main>
+                  </Container>
             </div>
           )}
         </ThemeProvider>
