@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { withStyles } from "@material-ui/core/styles";
-import { formatQuestion } from "../../utils/helpers";
 import {
   Grid,
   GridList,
@@ -84,9 +83,10 @@ class Question extends Component {
     );
   }
 }
-// If you pass a companent that you are rendering, the prop will be the second argument.
+// If you pass a component that you are rendering, the prop will be the second argument.
 // TODO: Reword
 function mapStateToProps({ authedUser, users, questions }, { id }) {
+  // Get the current question
   const question = questions[id];
   const author = question ? users[question.author] : "";
   const authedUserDetails = users[authedUser];
