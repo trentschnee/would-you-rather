@@ -5,7 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { Grid,Tabs,Tab,Paper,Typography,Box } from "@material-ui/core";
 //maybe make into helpers
 
-import QuestionCard from "./cards/Question";
+import Questionhome from "./cards/Questionhome";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -52,13 +52,13 @@ const Home = props => {
     </Paper>
     <TabPanel value={value} index={0}>
     <Grid container spacing={3} >
-        {answeredIds.map(id => <QuestionCard key={id} id={id} />)}
+        {answeredIds.map(id => <Questionhome key={id} id={id} />)}
       </Grid>
         </TabPanel>
         <TabPanel value={value} index={1} >
           
         <Grid container spacing={3} >
-        {unansweredIds.map(id => <QuestionCard key={id} id={id} />)}
+        {unansweredIds.map(id => <Questionhome key={id} id={id} />)}
       </Grid>
         </TabPanel>
         
