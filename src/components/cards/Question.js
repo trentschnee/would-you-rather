@@ -50,7 +50,7 @@ class Question extends Component {
     else{
       return (
       
-           <Grid item key={id} xs={6} sm={6} md={6}>
+           <Grid item key={id} xs={12} sm={12} md={12}>
            
                 <Link href={`/question/${id}`}><Paper className={classes.paper}>
           <Grid container spacing={2}>
@@ -59,7 +59,7 @@ class Question extends Component {
                 <img className={classes.img} alt="complex" src={avatarURL} />
               </ButtonBase>
             </Grid>
-            <Grid item xs={12} sm container>
+            <Grid item xs={4} sm container>
                 <Grid item xs>
                   <Typography gutterBottom variant="subtitle1">
                     {name} Asks..

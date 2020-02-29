@@ -56,10 +56,10 @@ class Navbar extends React.Component {
             <Link
               variant="button"
               color="textPrimary"
-              href="#"
+              href="/newquestion"
               className={classes.link}
             >
-              New Questions
+              New Question
             </Link>
           </nav>
           <Button href="#" variant="outlined" className={classes.link}>

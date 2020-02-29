@@ -10,6 +10,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import Navbar from "./Navbar";
 import Leaderboard from "./Leaderboard";
 import QuestionPage from "./QuestionPage"
+import NewQuestion from "./NewQuestion"
 const theme = createMuiTheme({
   palette: {
     type: "dark"
@@ -49,6 +50,7 @@ class App extends React.Component {
                   <Route path="/" exact component={Home}></Route>
                   <Route path="/question/:id" component={QuestionPage}/>
                   <Route path="/leaderboard" component={Leaderboard} />
+                  <Route path="/newQuestion" component={NewQuestion} />
                   </Container>
             
          </div>
