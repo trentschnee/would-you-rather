@@ -15,3 +15,10 @@ import {
       questions,
     }))
   }
+
+  export function saveQuestion(question){
+    return _saveQuestion(question);
+  }
+  export function saveQuestionAnswer(autheduser,qid,answer){
+    return _saveQuestionAnswer(autheduser,qid,answer);
+  }

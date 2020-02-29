@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import QuestionCard from "./cards/Question"
 import { Grid } from "@material-ui/core";
-class QuestionPage extends Component {
+class Question extends Component {
 render(){
     const {id} = this.props;
     console.log(this.props,"<-Test")
@@ -20,4 +20,4 @@ return{
     id,
 }
 }
-export default connect(mapStateToProps)(QuestionPage)
+export default connect(mapStateToProps)(Question)

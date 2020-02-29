@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import { NavLink } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
-import { Link, AppBar, Toolbar, Typography, Button } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
 const useStyles = theme => ({
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`
@@ -12,9 +12,11 @@ const useStyles = theme => ({
   },
   toolbarTitle: {
     flexGrow: 1
+    
   },
   link: {
-    margin: theme.spacing(1, 1.5)
+    margin: theme.spacing(1, 1.5),
+    color: "#fff",
   }
 });
 class Navbar extends React.Component {
@@ -37,30 +39,18 @@ class Navbar extends React.Component {
             Would You Rather
           </Typography>
           <nav>
-            <Link
-              variant="button"
-              color="textPrimary"
-              href="/"
-              className={classes.link}
-            >
-              Home
-            </Link>
-            <Link
-              variant="button"
-              color="textPrimary"
-              href="/leaderboard"
-              className={classes.link}
-            >
-              Leaderboard
-            </Link>
-            <Link
-              variant="button"
-              color="textPrimary"
-              href="/newquestion"
-              className={classes.link}
-            >
-              New Question
-            </Link>
+            <NavLink exact to="/" className={classes.link}>
+            
+            Home
+            </NavLink>
+            <NavLink exact to="/leaderboard" className={classes.link}>
+            
+            Leaderboard
+            </NavLink>
+            <NavLink exact to="/newquestion" className={classes.link}>
+            
+            New Question
+            </NavLink>
           </nav>
           <Button href="#" variant="outlined" className={classes.link}>
             Login

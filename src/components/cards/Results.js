@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import {handleAddAnswerToQuestion} from "../../actions/Questions"
 import { connect } from "react-redux";
-import {Link} from "react-router-dom";
-import MaterialUIForm from 'react-material-ui-form'
-import { withStyles } from "@material-ui/core/styles";
-import {JssProvider} from 'react-jss'
 
+import { withStyles } from "@material-ui/core/styles";
 import {
   Grid,
+  Link,
   Paper,
   Card,
   CardMedia,
@@ -16,13 +13,11 @@ import {
   Button,
   Typography,
   Radio,
-  TextField,
-  Checkbox,
-  FormGroup,
   FormControl,
   FormLabel,
   RadioGroup,
-  FormControlLabel
+  FormControlLabel,
+  LinearProgress
 } from "@material-ui/core";
 const useStyles = theme => ({
   paper: {
@@ -42,28 +37,20 @@ const useStyles = theme => ({
     borderRadius: "50%"
   }
 });
-class Question extends Component {
-  state = {
-    selected: "" 
-  }
-  handleChange = ev => {
-    this.setState({ selected: ev.target.value });
-    console.log(this.state)
-  };
-  submit = e =>{
-    const {selected} = this.state;
-    const {authedUserDetails,question,dispatch,id} = this.props;
-    dispatch(handleAddAnswerToQuestion(authedUserDetails.id,question.id,selected))
-    
-    
-
-  }
-
+class Results extends Component {
+  
   render() {
-    const { selected } = this.state;
+    
     const { classes, question, author, mauthedUserDetails,id } = this.props;
-    console.log(classes);
+    console.log(question);
     const { avatarURL, name } = author;
+    const {optionOne,optionTwo} = question;
+    const vote1 = optionOne.votes.length;
+    const vote2 = optionTwo.votes.length;
+    const totalVotes = vote1+vote2;
+    const vote1Ratio = (vote1 /totalVotes) * 100;
+    const vote2Ratio = (vote2 /totalVotes) * 100;
+    console.log(vote1Ratio,"<-DEBUG")
     if (question === null){
       return(<div>This question doesn't exist.</div>)
     
@@ -73,7 +60,7 @@ class Question extends Component {
       
            <Grid item key={id} xs={12} sm={12} md={12}>
            
-               <Paper className={classes.paper}>
+                <Link href={`/question/${id}`}><Paper className={classes.paper}>
           <Grid container spacing={2}>
             <Grid item>
               <ButtonBase className={classes.image}>
@@ -81,25 +68,32 @@ class Question extends Component {
               </ButtonBase>
             </Grid>
             <Grid item xs={4} sm container>
-            <JssProvider>
-              <MaterialUIForm onSubmit={this.submit}>
-
-          
-          <FormControl component="fieldset" name="method-of-payment" onSubmit={this.submit}>
-           
-            <RadioGroup aria-label="Answers" name="answers" onChange={this.handleChange} value={selected} >
-              <FormControlLabel value="optionOne" control={<Radio color="default"  />}  label={question.optionOne.text} />
-              <FormControlLabel value="optionTwo" control={<Radio color="default"  />}  label={question.optionTwo.text} /> 
-            </RadioGroup>
-          
-          </FormControl>
-          <Button type="submit">Submit</Button>
-        
-        </MaterialUIForm>
-        </JssProvider>
+                <Grid item xs>
+                  <Typography gutterBottom variant="subtitle1">
+                    {name} Asks..
+                  </Typography>
+                  <Typography variant="body2" gutterBottom>
+                    Would You Rather:
+                  </Typography>
+                  <Grid item xs>
+                  <Typography variant="body2" gutterBottom>
+                  {question.optionOne.text} ({vote1Ratio}%)
+                  </Typography>
+                  <LinearProgress variant="determinate" value={vote1Ratio} />
+                  <Typography variant="body2" gutterBottom>
+                  {question.optionTwo.text} ({vote2Ratio}%)
+                  </Typography>
+                  <LinearProgress variant="determinate" value={vote2Ratio} />
+                  </Grid>
+                  
+                </Grid>
+                <Grid item>
+                  <Button variant="contained">Submit</Button>
+                </Grid>
               </Grid>
           </Grid>
         </Paper>
+        </Link>
               </Grid>
         
        
@@ -115,10 +109,11 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id]
   const author = question ? users[question.author] : "";
   const authedUserDetails = users[authedUser];
+  
   return {
     question : question? question : null,
     author,
     authedUserDetails
   };
 }
-export default connect(mapStateToProps)(withStyles(useStyles)(Question));
+export default connect(mapStateToProps)(withStyles(useStyles)(Results));

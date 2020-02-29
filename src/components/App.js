@@ -9,7 +9,8 @@ import Container from "@material-ui/core/Container";
 import { ThemeProvider } from "@material-ui/styles";
 import Navbar from "./Navbar";
 import Leaderboard from "./Leaderboard";
-import QuestionPage from "./QuestionPage"
+import QuestionPage from "./Question"
+import ResultsPage from "./Results"
 import NewQuestion from "./NewQuestion"
 const theme = createMuiTheme({
   palette: {
@@ -50,7 +51,8 @@ class App extends React.Component {
                   <Route path="/" exact component={Home}></Route>
                   <Route path="/question/:id" component={QuestionPage}/>
                   <Route path="/leaderboard" component={Leaderboard} />
-                  <Route path="/newQuestion" component={NewQuestion} />
+                  <Route path="/newquestion" component={NewQuestion} />
+                  <Route path="/results/:id" component={ResultsPage} />
                   </Container>
             
          </div>
