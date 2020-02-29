@@ -38,7 +38,7 @@ const useStyles = theme => ({
 const Leaderboard = props => {
   const { userObj, classes } = props;
   const {
-    questionsAnswered,
+    questionsAns,
     questionsAsked,
     totalScore,
     avatarURL,
@@ -59,7 +59,7 @@ const Leaderboard = props => {
               Questions Asked: {questionsAsked}
             </Typography>
             <Typography gutterBottom>
-              Questions Answered: {questionsAnswered}
+              Questions Answered: {questionsAns}
             </Typography>
           </Grid>
 

@@ -6,6 +6,9 @@ import {
   Grid,
   Link,
   Paper,
+  Card,
+  CardMedia,
+  CardContent,CardActions,
   ButtonBase,
   Button,
   Typography,
@@ -34,9 +37,11 @@ const useStyles = theme => ({
   }
 });
 class Question extends Component {
+  
   render() {
+    
     const { classes, question, author, mauthedUserDetails,id } = this.props;
-    console.log(author);
+    console.log(classes);
     const { avatarURL, name } = author;
     if (question === null){
       return(<div>This question doesn't exist.</div>)
@@ -44,48 +49,49 @@ class Question extends Component {
     }
     else{
       return (
-        <Link href={`/question/${id}`}>
-        <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-          <Paper className={classes.paper}>
-            <Grid container spacing={2}>
-              <Grid item>
-                <ButtonBase className={classes.image}>
-                  <img className={classes.img} alt="complex" src={avatarURL} />
-                </ButtonBase>
-              </Grid>
-              <Grid item xs={12} sm container>
-                <Grid item xs container direction="column" spacing={2}>
-                  <Grid item xs>
-                    <Typography gutterBottom variant="subtitle1">
-                      {name} Asks..
-                    </Typography>
-                    <Typography variant="body2" gutterBottom>
-                      Would You Rather:
-                    </Typography>
-                    <FormControl component="fieldset" className="formControl">
-                      <RadioGroup aria-label="wyr" name="wyr">
-                        <FormControlLabel
-                          value="optionOne"
-                          control={<Radio color="default" />}
-                          label={question.optionOne.text}
-                        />
-                        <FormControlLabel
-                          value="optionTwo"
-                          control={<Radio color="default" />}
-                          label={question.optionTwo.text}
-                        />
-                      </RadioGroup>
-                    </FormControl>
-                  </Grid>
-                  <Grid item>
-                    <Button variant="contained">Submit</Button>
-                  </Grid>
+      
+           <Grid item key={id} xs={6} sm={6} md={6}>
+           
+                <Link href={`/question/${id}`}><Paper className={classes.paper}>
+          <Grid container spacing={2}>
+            <Grid item>
+              <ButtonBase className={classes.image}>
+                <img className={classes.img} alt="complex" src={avatarURL} />
+              </ButtonBase>
+            </Grid>
+            <Grid item xs={12} sm container>
+                <Grid item xs>
+                  <Typography gutterBottom variant="subtitle1">
+                    {name} Asks..
+                  </Typography>
+                  <Typography variant="body2" gutterBottom>
+                    Would You Rather:
+                  </Typography>
+                  <FormControl component="fieldset" className="formControl">
+                    <RadioGroup aria-label="wyr" name="wyr">
+                      <FormControlLabel
+                        value="optionOne"
+                        control={<Radio color="default" />}
+                        label={question.optionOne.text}
+                      />
+                      <FormControlLabel
+                        value="optionTwo"
+                        control={<Radio color="default" />}
+                        label={question.optionTwo.text}
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
+                <Grid item>
+                  <Button variant="contained">Submit</Button>
                 </Grid>
               </Grid>
-            </Grid>
-          </Paper>
-        </Grid>
+          </Grid>
+        </Paper>
         </Link>
+              </Grid>
+        
+       
       );
     }
     

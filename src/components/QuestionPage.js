@@ -3,13 +3,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import QuestionCard from "./cards/Question"
+import { Grid } from "@material-ui/core";
 class QuestionPage extends Component {
 render(){
     const {id} = this.props;
-    console.log(this.props)
-    return(<div>
+    console.log(this.props,"<-Test")
+    return( <Grid container spacing={3} >
         <QuestionCard id={id} />
-    </div>)
+    </Grid>)
 }
 
 }

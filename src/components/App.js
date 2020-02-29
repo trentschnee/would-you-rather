@@ -17,11 +17,15 @@ const theme = createMuiTheme({
 });
 
 const useStyles = theme => ({
-  container: {
+  root: {
+    flexGrow: 1,
+  },
+  cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
-  },
+  }
 });
+
 
 class App extends React.Component {
   componentDidMount() {
@@ -36,15 +40,20 @@ class App extends React.Component {
           {this.props.loading === true ? (
             "LOADING"
           ) : (
-            <div>
+            <Fragment>
               <Navbar />
               <CssBaseline />
-         <Container className={classes.container}>
+  
+              <div className={classes.root}>
+              <Container className={classes.cardGrid} maxWidth="md">
                   <Route path="/" exact component={Home}></Route>
                   <Route path="/question/:id" component={QuestionPage}/>
                   <Route path="/leaderboard" component={Leaderboard} />
                   </Container>
-            </div>
+            
+         </div>
+               
+            </Fragment>
           )}
         </ThemeProvider>
       </Router>

@@ -3,7 +3,7 @@ import { Grid } from "@material-ui/core";
 import { connect } from "react-redux";
 import LeaderboardCard from "./cards/Leaderboard";
 const Leaderboard = props => (
-  <Grid container spacing={3}>
+  <Grid container spacing={3} >
     {props.leaderBoard.map((obj, key) => (
       <LeaderboardCard key={key} userObj={obj} />
     ))}

@@ -12,7 +12,7 @@ class Home extends React.Component {
   render() {
     const { answeredIds, unansweredIds } = this.props;
     return (
-      <Grid container>
+      <Grid container spacing={3}>
         {this.state.showAnswered === true
           ? answeredIds.map(id => <QuestionCard key={id} id={id} />)
           : unansweredIds.map(id => <QuestionCard key={id} id={id} />)}
