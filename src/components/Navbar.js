@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
+import {handleLogout} from "../actions/AuthedUser"
 const useStyles = theme => ({
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`
@@ -20,8 +21,14 @@ const useStyles = theme => ({
   }
 });
 class Navbar extends React.Component {
+  handleClick = e =>{
+    const { isAuthed,dispatch,userLogged } = this.props;
+    console.log(userLogged,"testnav")
+    return (isAuthed ? (dispatch(handleLogout(userLogged))): null)
+
+  }
   render() {
-    const { classes } = this.props;
+    const { classes,isAuthed } = this.props;
     return (
       <AppBar
         position="static"
@@ -38,8 +45,10 @@ class Navbar extends React.Component {
           >
             Would You Rather
           </Typography>
-          <nav>
-            <NavLink exact to="/" className={classes.link}>
+           
+         
+         
+          {(isAuthed ?   <div> <NavLink exact to="/" className={classes.link}>
             
             Home
             </NavLink>
@@ -51,14 +60,17 @@ class Navbar extends React.Component {
             
             New Question
             </NavLink>
-          </nav>
-          <Button href="#" variant="outlined" className={classes.link}>
-            Login
-          </Button>
+            <NavLink exact to={(isAuthed ? "#" : "/login")} className={classes.link}><Button onClick={this.handleClick} variant="outlined" className={classes.link}>Logout </Button>  </NavLink></div>: null)}
+         
+         
         </Toolbar>
       </AppBar>
     );
   }
 }
-
-export default connect()(withStyles(useStyles)(Navbar));
+function mapStateToProps({ authedUser }) {
+  //if the authed user is null, make the looking to true.
+  const userLogged = authedUser!== null ? authedUser : null
+  return { isAuthed: authedUser !== null,userLogged };
+}
+export default connect(mapStateToProps)(withStyles(useStyles)(Navbar));

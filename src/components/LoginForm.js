@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import { withStyles } from "@material-ui/core/styles";
 import { Paper,Typography,ListItemText,Divider ,ListItem ,List,ListItemAvatar,Avatar,Grid,TextField,Button,ListItemSecondaryAction,IconButton,ListItemIcon,Select,MenuItem   } from "@material-ui/core";
-import {handleAddQuestion} from "../actions/Questions"
+import {handleLogin} from "../actions/AuthedUser"
 import {Redirect} from 'react-router-dom'
 const useStyles = theme =>(
   {
@@ -22,16 +22,22 @@ const useStyles = theme =>(
 class LoginForm extends Component {
   state = {
     selectedValue :1,
-    toHome : false,
+    isAuthed : false,
   };
   // handle change method will take in an event.
   handleChange =(e) =>{
      const selectedValue = e.target.value;
-
      this.setState({selectedValue:selectedValue})
   // takes in the target.value field from the event.
 
 
+  }
+  handleSubmit = (e)=>{
+    const {selectedValue} = this.state; 
+    const {dispatch,history} = this.props;
+    dispatch(handleLogin(selectedValue))
+    this.setState({isAuthed:true})
+    history.push('/')
   }
 
 render(){

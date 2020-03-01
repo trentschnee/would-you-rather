@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import { handleInitialData } from "../actions/Shared";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
@@ -34,18 +34,20 @@ const useStyles = theme =>(
 
 
 
-const Home = props => {
-  const [value, setValue] = React.useState(0);
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+class Home extends Component{
+  state = {
+    value: 0
+  }
+  handleChange = (event, newValue) => {
+  
+    this.setState({value:newValue})
   };
-    console.log(props)
-    const { answeredIds, unansweredIds,classes } = props;
-
-
+  render(){
+    const { answeredIds, unansweredIds,classes } = this.props;
+    const {value}= this.state
     return (
       <div><Paper className={classes.paper}>
-      <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" centered indicatorColor="primary">
+      <Tabs value={value} onChange={this.handleChange} aria-label="simple tabs example" centered indicatorColor="primary">
       <Tab label="Unanswered Questions" />
       <Tab label="Answered Questions"  />
       
@@ -67,6 +69,13 @@ const Home = props => {
       
       </div>
     )
+  }
+  
+    
+  
+
+
+    
 }
 
 // Take the state of our store for questions

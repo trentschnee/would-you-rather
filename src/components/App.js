@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
 import { handleInitialData } from "../actions/Shared";
 import { connect } from "react-redux";
 import Home from "./Home";
@@ -36,31 +36,36 @@ class App extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes,isAuthed } = this.props;
     return (
       <Router>
         <ThemeProvider theme={theme}>
-          {this.props.loading === true ? (
-            "LOADING"
-          ) : (
+         
             <Fragment>
               <Navbar />
               <CssBaseline />
   
               <div className={classes.root}>
+            
               <Container className={classes.cardGrid} maxWidth="md">
+              {this.props.isAuthed === false ? (
+                
+            <Route path="/" component={LoginForm} />
+            ) : (
+              <Switch>
                   <Route path="/" exact component={Home}></Route>
                   <Route path="/question/:id" component={QuestionPage}/>
                   <Route path="/leaderboard" component={Leaderboard} />
                   <Route path="/newquestion" component={NewQuestion} />
                   <Route path="/results/:id" component={ResultsPage} />
-                  <Route path="/login" component={LoginForm} />
-                  </Container>
-            
-         </div>
-               
-            </Fragment>
+                  </Switch>
+                 
           )}
+           </Container>
+            
+            </div>
+                  
+               </Fragment>
         </ThemeProvider>
       </Router>
     );
@@ -69,6 +74,7 @@ class App extends React.Component {
 
 function mapStateToProps({ authedUser }) {
   //if the authed user is null, make the looking to true.
-  return { loading: authedUser === null };
+  console.log(authedUser)
+  return { isAuthed: authedUser !== null };
 }
 export default connect(mapStateToProps)(withStyles(useStyles)(App));
