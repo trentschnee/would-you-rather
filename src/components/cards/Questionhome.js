@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import {handleAddAnswerToQuestion} from "../../actions/Questions"
 import { connect } from "react-redux";
 import {Link} from "react-router-dom";
-import MaterialUIForm from 'react-material-ui-form'
 import { withStyles } from "@material-ui/core/styles";
-import {JssProvider} from 'react-jss'
-
 import {
   Grid,
   Paper,
