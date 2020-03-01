@@ -12,6 +12,7 @@ import Leaderboard from "./Leaderboard";
 import QuestionPage from "./Question"
 import ResultsPage from "./Results"
 import NewQuestion from "./NewQuestion"
+import LoginForm from "./LoginForm"
 const theme = createMuiTheme({
   palette: {
     type: "dark"
@@ -53,6 +54,7 @@ class App extends React.Component {
                   <Route path="/leaderboard" component={Leaderboard} />
                   <Route path="/newquestion" component={NewQuestion} />
                   <Route path="/results/:id" component={ResultsPage} />
+                  <Route path="/login" component={LoginForm} />
                   </Container>
             
          </div>

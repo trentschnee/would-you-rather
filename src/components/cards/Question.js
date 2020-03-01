@@ -88,7 +88,7 @@ class Question extends Component {
             </Grid>
             <Grid item xs={4} sm container>
             <JssProvider>
-              <form onSubmit={this.submit}>
+              <form >
 
           
           <FormControl component="fieldset" name="method-of-payment" onSubmit={this.submit}>
