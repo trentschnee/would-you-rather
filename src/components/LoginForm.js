@@ -56,7 +56,7 @@ render(){
         <Grid item xs={5} sm={5} md={5} >
         <form onSubmit={this.handleSubmit}>
       {/**Redirect to homeview if submitted**/}
-      <Paper p={2} className={classes.paper} justifyContent='space-between' >
+      <Paper p={2} className={classes.paper} >
       
         <Typography component="h1" variant="h4" align="center">
           Login
@@ -75,7 +75,7 @@ render(){
           <MenuItem value={1}>
             <em>Select any user</em>
           </MenuItem>
-          {Object.keys(users).map((item)=> <MenuItem value={users[item].id}> <Avatar alt="Remy Sharp" src={users[item].avatarURL} />{users[item].name}</MenuItem> )}
+          {Object.keys(users).map((item)=> <MenuItem key={item} value={users[item].id}> <Avatar alt="Remy Sharp" src={users[item].avatarURL} />{users[item].name}</MenuItem> )}
         </Select>
   <Button variant="outlined"  type= "submit">Login</Button>
 

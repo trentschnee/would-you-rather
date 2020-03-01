@@ -7,7 +7,6 @@ import { Grid } from "@material-ui/core";
 class Question extends Component {
 render(){
     const {id} = this.props;
-    console.log(this.props,"<-Test")
     return( <Grid container spacing={3} >
         <QuestionCard id={id} />
     </Grid>)

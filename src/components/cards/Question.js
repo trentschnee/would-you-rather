@@ -52,6 +52,7 @@ class Question extends Component {
     console.log(this.state)
   };
   submit = e =>{
+    e.preventDefault()
     const {selected} = this.state;
     const {authedUserDetails,question,dispatch,id} = this.props;
     dispatch(handleAddAnswerToQuestion(authedUserDetails.id,question.id,selected))
@@ -77,36 +78,49 @@ class Question extends Component {
     else{
       return (
       
-           <Grid item key={id} xs={12} sm={12} md={12}>
+        <Grid item key={id} xs={12} sm={12} md={12}>
+        <JssProvider>
+         <form onSubmit={this.submit} >
+          <Paper className={classes.paper}>
+     <Grid container spacing={2}>
+       <Grid item>
+         <ButtonBase className={classes.image}>
+           <img className={classes.img} alt="complex" src={avatarURL} />
+         </ButtonBase>
+       </Grid>
+     
+       <Grid item xs={4} sm container>
+       <Grid item xs>
+             <Typography gutterBottom variant="subtitle1">
+               {name} Asks..
+             </Typography>
+             <Typography variant="body2" gutterBottom>
+               Would You Rather:
+             </Typography>
            
-               <Paper className={classes.paper}>
-          <Grid container spacing={2}>
-            <Grid item>
-              <ButtonBase className={classes.image}>
-                <img className={classes.img} alt="complex" src={avatarURL} />
-              </ButtonBase>
-            </Grid>
-            <Grid item xs={4} sm container>
-            <JssProvider>
-              <form >
 
-          
-          <FormControl component="fieldset" name="method-of-payment" onSubmit={this.submit}>
-           
-            <RadioGroup aria-label="Answers" name="answers" onChange={this.handleChange} value={selected} >
-              <FormControlLabel value="optionOne" control={<Radio color="default"  />}  label={question.optionOne.text} />
-              <FormControlLabel value="optionTwo" control={<Radio color="default"  />}  label={question.optionTwo.text} /> 
-            </RadioGroup>
-          
-          </FormControl>
-          <Button type="submit">Submit</Button>
-        
-        </form>
-        </JssProvider>
-              </Grid>
-          </Grid>
-        </Paper>
-              </Grid>
+     
+     <FormControl component="fieldset" name="method-of-payment" >
+      
+       <RadioGroup aria-label="Answers" name="answers" onChange={this.handleChange} value={selected} >
+         <FormControlLabel value="optionOne" control={<Radio color="default"  />}  label={question.optionOne.text} />
+         <FormControlLabel value="optionTwo" control={<Radio color="default"  />}  label={question.optionTwo.text} /> 
+       </RadioGroup>
+     
+     </FormControl>
+     
+   
+  
+           </Grid>
+       <Grid item>
+         <Button type="submit">Submit</Button>
+       </Grid>
+         </Grid>
+     </Grid>
+   </Paper>
+   </form>
+   </JssProvider>
+         </Grid>
         
        
       );
