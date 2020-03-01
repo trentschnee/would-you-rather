@@ -46,19 +46,20 @@ const Home = props => {
     return (
       <div><Paper className={classes.paper}>
       <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" centered indicatorColor="primary">
-      <Tab label="Unanswered Questions"  />
-          <Tab label="Answered Questions" />
+      <Tab label="Unanswered Questions" />
+      <Tab label="Answered Questions"  />
+      
         </Tabs>
     </Paper>
     <TabPanel value={value} index={0}>
     <Grid container spacing={3} >
-        {answeredIds.map(id => <Questionhome key={id} id={id} />)}
+        {unansweredIds.map(id => <Questionhome key={id} id={id} />)}
       </Grid>
         </TabPanel>
         <TabPanel value={value} index={1} >
           
-        <Grid container spacing={3} >
-        {unansweredIds.map(id => <Questionhome key={id} id={id} />)}
+         <Grid container spacing={3} >
+        {answeredIds.map(id => <Questionhome key={id} id={id} />)}
       </Grid>
         </TabPanel>
         

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import {handleAddAnswerToQuestion} from "../../actions/Questions"
 import { connect } from "react-redux";
 import {Link} from "react-router-dom";
-import MaterialUIForm from 'react-material-ui-form'
 import { withStyles } from "@material-ui/core/styles";
 import {JssProvider} from 'react-jss'
+import {Redirect} from 'react-router-dom'
 
 import {
   Grid,
@@ -44,7 +44,8 @@ const useStyles = theme => ({
 });
 class Question extends Component {
   state = {
-    selected: "" 
+    selected: "",
+    toResults:'', 
   }
   handleChange = ev => {
     this.setState({ selected: ev.target.value });
@@ -54,14 +55,19 @@ class Question extends Component {
     const {selected} = this.state;
     const {authedUserDetails,question,dispatch,id} = this.props;
     dispatch(handleAddAnswerToQuestion(authedUserDetails.id,question.id,selected))
-    
+    this.setState({optionOne:'',optionTwo:'',toResults:true})
     
 
   }
 
   render() {
-    const { selected } = this.state;
+    const { selected,toResults } = this.state;
+
+
     const { classes, question, author, mauthedUserDetails,id } = this.props;
+    if (toResults === true){
+      return (<Redirect to={`/results/${id}`}/>);
+    }
     console.log(classes);
     const { avatarURL, name } = author;
     if (question === null){
@@ -82,7 +88,7 @@ class Question extends Component {
             </Grid>
             <Grid item xs={4} sm container>
             <JssProvider>
-              <MaterialUIForm onSubmit={this.submit}>
+              <form onSubmit={this.submit}>
 
           
           <FormControl component="fieldset" name="method-of-payment" onSubmit={this.submit}>
@@ -95,7 +101,7 @@ class Question extends Component {
           </FormControl>
           <Button type="submit">Submit</Button>
         
-        </MaterialUIForm>
+        </form>
         </JssProvider>
               </Grid>
           </Grid>

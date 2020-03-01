@@ -60,7 +60,7 @@ class Results extends Component {
       
            <Grid item key={id} xs={12} sm={12} md={12}>
            
-                <Link href={`/question/${id}`}><Paper className={classes.paper}>
+               <Paper className={classes.paper}>
           <Grid container spacing={2}>
             <Grid item>
               <ButtonBase className={classes.image}>
@@ -93,7 +93,6 @@ class Results extends Component {
               </Grid>
           </Grid>
         </Paper>
-        </Link>
               </Grid>
         
        
