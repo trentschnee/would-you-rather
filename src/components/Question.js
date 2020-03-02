@@ -7,7 +7,10 @@ import { Grid } from "@material-ui/core";
 class Question extends Component {
 render(){
     const {id} = this.props;
-    return( <Grid container spacing={3} >
+    return( <Grid container
+        direction="row"
+        justify="center"
+        alignItems="center" spacing={3} >
         <QuestionCard id={id} />
     </Grid>)
 }

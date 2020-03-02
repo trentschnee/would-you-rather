@@ -8,7 +8,10 @@ class Results extends Component {
 render(){
     const {id} = this.props;
     console.log(this.props,"<-Test")
-    return( <Grid container spacing={3} >
+    return( <Grid container
+        direction="row"
+        justify="center"
+        alignItems="center" spacing={3} >
         <ResultsCard id={id} />
     </Grid>)
 }

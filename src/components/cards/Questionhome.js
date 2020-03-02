@@ -3,49 +3,43 @@ import {handleAddAnswerToQuestion} from "../../actions/Questions"
 import { connect } from "react-redux";
 import {Link} from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
-import {
-  Grid,
-  Paper,
-  Card,
-  CardMedia,
-  CardContent,CardActions,
-  ButtonBase,
-  Button,
-  Typography,
-  Radio,
-  TextField,
-  Checkbox,
-  FormGroup,
-  FormControl,
-  FormLabel,
-  RadioGroup,
-  FormControlLabel
-} from "@material-ui/core";
+
+import {CardHeader,Grid,Button,Typography, IconButton,CardMedia,CardContent, Card} from '@material-ui/core';
 const useStyles = theme => ({
-  paper: {
-    padding: theme.spacing(2),
-    margin: "auto",
-    maxWidth: 500
+  root: {
+    display: 'flex',
   },
-  image: {
-    width: 80,
-    height: 80
+  details: {
+    display: 'flex',
+    flexDirection: 'column',
   },
-  img: {
-    margin: "auto",
-    display: "block",
-    maxWidth: "100%",
-    maxHeight: "100%",
-    borderRadius: "50%"
-  }
+  content: {
+    flex: '1 0 auto',
+  },
+  cover: {
+    width: 151,
+  },
+  controls: {
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+  },
+  playIcon: {
+    height: 38,
+    width: 38,
+  },
 });
 class Questionhome extends Component {
 
   render() {
     
     const { classes, question, author, mauthedUserDetails,id } = this.props;
+    const {optionOne,optionTwo}= question;
     console.log(classes);
     const { avatarURL, name } = author;
+    const header = `${name} asks`;
+    var displayQuestion = optionOne.text.split(' ').slice(0,3).join(' ') + ' or ' + optionTwo.text.slice(0,2)
     if (question === null){
       return(<div>This question doesn't exist.</div>)
     
@@ -53,46 +47,34 @@ class Questionhome extends Component {
     else{
       return (
       
-           <Grid item key={id} xs={12} sm={12} md={12}>
+           <Grid item key={id} xs={7} sm={7} md={7}>
            
-               <Paper className={classes.paper}>
-          <Grid container spacing={2}>
-            <Grid item>
-              <ButtonBase className={classes.image}>
-                <img className={classes.img} alt="complex" src={avatarURL} />
-              </ButtonBase>
-            </Grid>
-            <Grid item xs={4} sm container>
-                <Grid item xs>
-                  <Typography gutterBottom variant="subtitle1">
-                    {name} Asks..
-                  </Typography>
-                  <Typography variant="body2" gutterBottom>
-                    Would You Rather:
-                  </Typography>
-                  <FormControl component="fieldset" className="formControl">
-                    <RadioGroup aria-label="wyr" name="wyr">
-                      <FormControlLabel
-                        value="optionOne"
-                        control={<Radio color="default" />}
-                        label={question.optionOne.text}
-                      />
-                      <FormControlLabel
-                        value="optionTwo"
-                        control={<Radio color="default" />}
-                        label={question.optionTwo.text}
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-                <Grid item>
-                <Link to={`/question/${id}`}>
-                  <Button variant="contained">Answer</Button>
+           <Card className={classes.root}>
+
+           <CardMedia
+        className={classes.cover}
+        image={avatarURL}
+        title="Live from space album cover"
+      />
+      <div className={classes.details}>
+        <CardContent className={classes.content}>
+          <Typography >
+            {name} Asks:
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            Would you rather ..{displayQuestion}..
+          </Typography>
+        </CardContent>
+        <div className={classes.controls}>
+        <Link to={`/question/${id}`}>
+                  <Button variant="contained">View Poll</Button>
                   </Link>
-                </Grid>
-              </Grid>
-          </Grid>
-        </Paper>
+         
+        
+        </div>
+      </div>
+     
+    </Card>
      
               </Grid>
         

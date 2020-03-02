@@ -29,6 +29,7 @@ const useStyles = theme =>(
     paper: {
       marginBottom: theme.spacing(3),
     },
+    
   }
 );
 
@@ -55,13 +56,19 @@ class Home extends Component{
     </Paper>
     <TabPanel value={value} index={0}>
       
-    <Grid container spacing={3} >
+    <Grid container
+  direction="row"
+  justify="center"
+  alignItems="center" spacing={3} >
         {unansweredIds.map(id => <Questionhome key={id} id={id} />)}
       </Grid>
         </TabPanel>
         <TabPanel value={value} index={1} >
           
-         <Grid container spacing={3} >
+         <Grid container
+  direction="row"
+  justify="center"
+  alignItems="center" spacing={3} >
         {answeredIds.map(id => <Questionhome key={id} id={id} />)}
       </Grid>
         </TabPanel>

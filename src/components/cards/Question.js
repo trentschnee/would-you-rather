@@ -16,11 +16,6 @@ import {
   Button,
   Typography,
   Radio,
-  TextField,
-  Checkbox,
-  FormGroup,
-  FormControl,
-  FormLabel,
   RadioGroup,
   FormControlLabel
 } from "@material-ui/core";
@@ -100,20 +95,17 @@ class Question extends Component {
            
 
      
-     <FormControl component="fieldset" name="method-of-payment" >
       
        <RadioGroup aria-label="Answers" name="answers" onChange={this.handleChange} value={selected} >
          <FormControlLabel value="optionOne" control={<Radio color="default"  />}  label={question.optionOne.text} />
          <FormControlLabel value="optionTwo" control={<Radio color="default"  />}  label={question.optionTwo.text} /> 
        </RadioGroup>
      
-     </FormControl>
-     
    
   
            </Grid>
        <Grid item>
-         <Button type="submit">Submit</Button>
+         <Button variant="contained" type="submit">Submit</Button>
        </Grid>
          </Grid>
      </Grid>

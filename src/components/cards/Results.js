@@ -58,7 +58,7 @@ class Results extends Component {
     else{
       return (
       
-           <Grid item key={id} xs={12} sm={12} md={12}>
+           <Grid item key={id} xs={7} sm={7} md={7}>
            
                <Paper className={classes.paper}>
           <Grid container spacing={2}>
@@ -87,9 +87,7 @@ class Results extends Component {
                   </Grid>
                   
                 </Grid>
-                <Grid item>
-                  <Button variant="contained">Submit</Button>
-                </Grid>
+               
               </Grid>
           </Grid>
         </Paper>

@@ -3,7 +3,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import { withStyles } from "@material-ui/core/styles";
-import { Paper,Typography,Grid,TextField,Button,Checkbox } from "@material-ui/core";
+import { Paper,Typography,Grid,TextField,Button } from "@material-ui/core";
 import {handleAddQuestion} from "../actions/Questions"
 import {Redirect} from 'react-router-dom'
 const useStyles = theme =>(
@@ -60,7 +60,10 @@ render(){
         <Typography variant="h6" gutterBottom>
         Would you rather ...
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container
+  direction="row"
+  justify="center"
+  alignItems="center" spacing={3}>
         <Grid item xs={12} md={12}>
           <TextField required id="optionOne" label="Enter Question One Text Here" fullWidth onChange={this.handleChange} value={optionOne} />
         </Grid>
