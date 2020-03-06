@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { handleAddAnswerToQuestion } from "../../actions/Questions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
