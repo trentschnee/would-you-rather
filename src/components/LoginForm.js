@@ -31,6 +31,16 @@ const useStyles = theme => ({
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2)
   },
+  formControl: {
+    margin: 0,
+    fullWidth: true,
+    display: "flex",
+    wrap: "nowrap"
+  },
+  wrapIcon: {
+    display: "inline-flex",
+    alignItems: "center"
+  },
   inline: {
     display: "inline"
   }
@@ -78,7 +88,7 @@ class LoginForm extends Component {
               </Typography>
 
               <div>
-                <FormControl>
+                <FormControl className={classes.formControl}>
                   <Select
                     labelId="demo-customized-select-label"
                     id="demo-customized-select"
@@ -90,13 +100,25 @@ class LoginForm extends Component {
                     </MenuItem>
                     {Object.keys(users).map(item => (
                       <MenuItem key={item} value={users[item].id}>
-                        {" "}
-                        <Avatar alt="Remy Sharp" src={users[item].avatarURL} />
-                        {users[item].name}
+                        <Typography
+                          variant="inherit"
+                          className={classes.wrapIcon}
+                        >
+                          <ListItemAvatar>
+                            <Avatar
+                              alt={users[item].name}
+                              src={users[item].avatarURL}
+                            />
+                          </ListItemAvatar>
+
+                          {users[item].name}
+                        </Typography>
                       </MenuItem>
                     ))}
                   </Select>
-                  <FormHelperText>Some important helper text</FormHelperText>
+                  <FormHelperText>
+                    Please select the user you want to login as.
+                  </FormHelperText>
 
                   <Button variant="outlined" type="submit">
                     Login
