@@ -76,7 +76,7 @@ class Home extends Component {
             spacing={3}
           >
             {answeredIds.map(id => (
-              <Questionhome key={id} id={id} />
+              <Questionhome key={id} id={id} results={true} />
             ))}
           </Grid>
         </TabPanel>

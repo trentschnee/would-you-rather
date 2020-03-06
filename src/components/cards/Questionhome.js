@@ -37,7 +37,7 @@ const useStyles = theme => ({
 });
 class Questionhome extends Component {
   render() {
-    const { classes, question, author, id } = this.props;
+    const { classes, question, author, id, results } = this.props;
     const { optionOne, optionTwo } = question;
     console.log(classes);
     const { avatarURL, name } = author;
@@ -69,9 +69,15 @@ class Questionhome extends Component {
                 </Typography>
               </CardContent>
               <div className={classes.controls}>
-                <Link to={`/question/${id}`}>
-                  <Button variant="outlined">View Poll</Button>
-                </Link>
+                {results ? (
+                  <Link to={`/results/${id}`}>
+                    <Button variant="outlined">View Results</Button>{" "}
+                  </Link>
+                ) : (
+                  <Link to={`/question/${id}`}>
+                    <Button variant="outlined">View Poll</Button>{" "}
+                  </Link>
+                )}
               </div>
             </div>
           </Card>

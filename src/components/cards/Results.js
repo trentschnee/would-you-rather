@@ -44,8 +44,7 @@ class Results extends Component {
     const totalVotes = vote1 + vote2;
     const vote1Ratio = ((vote1 / totalVotes) * 100).toFixed(1);
     const vote2Ratio = ((vote2 / totalVotes) * 100).toFixed(1);
-    console.log(question);
-    console.log(vote1Ratio, "<-DEBUG");
+
     if (question === null) {
       return <div>This question doesn't exist.</div>;
     } else {
