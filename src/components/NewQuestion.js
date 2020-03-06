@@ -55,7 +55,7 @@ class NewQuestion extends Component {
             Create New Question
           </Typography>
           <Typography variant="h6" gutterBottom>
-            Would you rather ...
+            Would You Rather ...
           </Typography>
           <Grid
             container

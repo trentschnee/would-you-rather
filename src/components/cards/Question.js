@@ -93,7 +93,7 @@ class Question extends Component {
                       component="p"
                       color="textSecondary"
                     >
-                      Would you rather:
+                      Would You Rather:
                     </Typography>
 
                     <RadioGroup
