@@ -85,11 +85,11 @@ class Question extends Component {
 
                 <Grid item xs={4} sm container>
                   <Grid item xs>
-                    <Typography gutterBottom variant="subtitle1">
-                      {name} Asks..
+                    <Typography variant="h6" gutterBottom>
+                      {name} Asks:
                     </Typography>
-                    <Typography variant="body2" gutterBottom>
-                      Would You Rather:
+                    <Typography variant="body1" component="p">
+                      Would you rather:
                     </Typography>
 
                     <RadioGroup

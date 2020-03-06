@@ -57,14 +57,14 @@ class Questionhome extends Component {
             <CardMedia
               className={classes.cover}
               image={avatarURL}
-              title="Live from space album cover"
+              title={name}
             />
             <div className={classes.details}>
               <CardContent className={classes.content}>
                 <Typography variant="h6" gutterBottom>
                   {name} Asks:
                 </Typography>
-                <Typography variant="body2" component="p" color="textSecondary">
+                <Typography variant="body1" component="p" color="textSecondary">
                   Would you rather ..{displayQuestion}..
                 </Typography>
               </CardContent>
