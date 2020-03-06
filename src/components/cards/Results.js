@@ -10,6 +10,12 @@ import {
   LinearProgress
 } from "@material-ui/core";
 const useStyles = theme => ({
+  customPanel: {
+    border: "1px solid rgba(255, 255, 255, 0.23)",
+    padding: "5px 15px",
+    margin: "0.5em",
+    borderRadius: "0.5em"
+  },
   paper: {
     padding: theme.spacing(2),
     margin: "auto",
@@ -36,8 +42,8 @@ class Results extends Component {
     const vote1 = optionOne.votes.length;
     const vote2 = optionTwo.votes.length;
     const totalVotes = vote1 + vote2;
-    const vote1Ratio = (vote1 / totalVotes) * 100;
-    const vote2Ratio = (vote2 / totalVotes) * 100;
+    const vote1Ratio = ((vote1 / totalVotes) * 100).toFixed(1);
+    const vote2Ratio = ((vote2 / totalVotes) * 100).toFixed(1);
     console.log(question);
     console.log(vote1Ratio, "<-DEBUG");
     if (question === null) {
@@ -54,21 +60,43 @@ class Results extends Component {
               </Grid>
               <Grid item xs={4} sm container>
                 <Grid item xs>
-                  <Typography gutterBottom variant="subtitle1">
-                    {name} Asks..
+                  <Typography variant="h6" gutterBottom>
+                    Results
                   </Typography>
-                  <Typography variant="body2" gutterBottom>
-                    Would You Rather:
-                  </Typography>
+
                   <Grid item xs>
-                    <Typography variant="body2" gutterBottom>
-                      {question.optionOne.text} ({vote1Ratio}%)
-                    </Typography>
-                    <LinearProgress variant="determinate" value={vote1Ratio} />
-                    <Typography variant="body2" gutterBottom>
-                      {question.optionTwo.text} ({vote2Ratio}%)
-                    </Typography>
-                    <LinearProgress variant="determinate" value={vote2Ratio} />
+                    <div className={classes.customPanel}>
+                      <Typography variant="body1" gutterBottom>
+                        {question.optionOne.text} ({vote1Ratio}%)
+                      </Typography>
+                      <LinearProgress
+                        variant="determinate"
+                        value={vote1Ratio}
+                      />
+                      <Typography
+                        variant="body2"
+                        component="p"
+                        color="textSecondary"
+                      >
+                        {vote1} out of {totalVotes} votes
+                      </Typography>
+                    </div>
+                    <div className={classes.customPanel}>
+                      <Typography variant="body1" gutterBottom>
+                        {question.optionTwo.text} ({vote2Ratio}%)
+                      </Typography>
+                      <LinearProgress
+                        variant="determinate"
+                        value={vote2Ratio}
+                      />
+                      <Typography
+                        variant="body2"
+                        component="p"
+                        color="textSecondary"
+                      >
+                        {vote2} out of {totalVotes} votes
+                      </Typography>
+                    </div>
                   </Grid>
                 </Grid>
               </Grid>

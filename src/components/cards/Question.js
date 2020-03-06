@@ -88,7 +88,11 @@ class Question extends Component {
                     <Typography variant="h6" gutterBottom>
                       {name} Asks:
                     </Typography>
-                    <Typography variant="body1" component="p">
+                    <Typography
+                      variant="body1"
+                      component="p"
+                      color="textSecondary"
+                    >
                       Would you rather:
                     </Typography>
 
