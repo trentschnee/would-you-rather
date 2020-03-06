@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: "johndoe",
     name: "John Doe",
-    avatarURL: "https://image.flaticon.com/icons/svg/145/145842.svg",
+    avatarURL: "https://tylermcginnis.com/would-you-rather/dan.jpg",
     answers: {
       xj352vofupe1dqz9emx13r: "optionOne",
       vthrdm985a262al8qx3do: "optionTwo",
@@ -155,7 +155,7 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
 }
 
 export function _saveQuestion(question) {
-  console.log(question,"_saveQuestion")
+  console.log(question, "_saveQuestion");
   return new Promise((res, rej) => {
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
@@ -181,7 +181,7 @@ export function _saveQuestion(question) {
 
 export function _saveQuestionAnswer({ authedUser, qid, answer }) {
   return new Promise((res, rej) => {
-    console.log(authedUser, qid, answer)
+    console.log(authedUser, qid, answer);
     setTimeout(() => {
       users = {
         ...users,
