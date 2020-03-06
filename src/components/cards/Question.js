@@ -111,7 +111,7 @@ class Question extends Component {
                     </RadioGroup>
                   </Grid>
                   <Grid item>
-                    <Button variant="contained" type="submit">
+                    <Button variant="outlined" type="submit">
                       Submit
                     </Button>
                   </Grid>

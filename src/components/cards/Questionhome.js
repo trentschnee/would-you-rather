@@ -70,7 +70,7 @@ class Questionhome extends Component {
               </CardContent>
               <div className={classes.controls}>
                 <Link to={`/question/${id}`}>
-                  <Button variant="contained">View Poll</Button>
+                  <Button variant="outlined">View Poll</Button>
                 </Link>
               </div>
             </div>
