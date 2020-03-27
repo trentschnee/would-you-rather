@@ -56,7 +56,7 @@ class App extends React.Component {
                       component={QuestionPage}
                     />
                     <Route exact path="/leaderboard" component={Leaderboard} />
-                    <Route exact path="/newquestion" component={NewQuestion} />
+                    <Route exact path="/add" component={NewQuestion} />
                     <Route exact path="/results/:id" component={ResultsPage} />
                   </Switch>
                 )}

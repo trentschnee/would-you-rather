@@ -64,7 +64,7 @@ class Navbar extends React.Component {
             </NavLink>
             <NavLink
               exact
-              to="/newquestion"
+              to="/add"
               className={classes.link}
               activeStyle={isAuthed !== true && { fontWeight: "normal" }}
             >
