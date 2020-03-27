@@ -71,11 +71,11 @@ class Questionhome extends Component {
               <div className={classes.controls}>
                 {results ? (
                   <Link to={`/results/${id}`}>
-                    <Button variant="outlined">View Results</Button>{" "}
+                    <Button variant="outlined">View Results</Button>
                   </Link>
                 ) : (
-                  <Link to={`/question/${id}`}>
-                    <Button variant="outlined">View Poll</Button>{" "}
+                  <Link to={`/questions/${id}`}>
+                    <Button variant="outlined">View Poll</Button>
                   </Link>
                 )}
               </div>

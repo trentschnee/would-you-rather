@@ -36,15 +36,19 @@ const useStyles = theme => ({
 class Results extends Component {
   render() {
     const { classes, question, author, mauthedUserDetails, id } = this.props;
-    console.log(question);
+    console.log(id);
     const { avatarURL, name } = author;
+    const authedID = this.props.authedUserDetails.id;
+    
     const { optionOne, optionTwo } = question;
+  
+    let optionOneSelected = optionOne.votes.includes(authedID)
+    console.log(optionOneSelected)
     const vote1 = optionOne.votes.length;
     const vote2 = optionTwo.votes.length;
     const totalVotes = vote1 + vote2;
     const vote1Ratio = ((vote1 / totalVotes) * 100).toFixed(1);
     const vote2Ratio = ((vote2 / totalVotes) * 100).toFixed(1);
-
     if (question === null) {
       return <div>This question doesn't exist.</div>;
     } else {
@@ -68,6 +72,7 @@ class Results extends Component {
                       <Typography variant="body1" gutterBottom>
                         {question.optionOne.text} ({vote1Ratio}%)
                       </Typography>
+                      
                       <LinearProgress
                         variant="determinate"
                         value={vote1Ratio}
@@ -79,6 +84,8 @@ class Results extends Component {
                       >
                         {vote1} out of {totalVotes} votes
                       </Typography>
+                      {optionOneSelected && <div><Typography variant="caption">You selected this answer ✔</Typography></div>}
+                      
                     </div>
                     <div className={classes.customPanel}>
                       <Typography variant="body1" gutterBottom>
@@ -94,6 +101,7 @@ class Results extends Component {
                         color="textSecondary"
                       >
                         {vote2} out of {totalVotes} votes
+                        {optionOneSelected === false && <div><Typography variant="caption">You selected this answer ✔</Typography></div>}
                       </Typography>
                     </div>
                   </Grid>

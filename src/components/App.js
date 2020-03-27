@@ -52,7 +52,7 @@ class App extends React.Component {
                     <Route exact path="/" component={Home}></Route>
                     <Route
                       exact
-                      path="/question/:id"
+                      path="/questions/:id"
                       component={QuestionPage}
                     />
                     <Route exact path="/leaderboard" component={Leaderboard} />
