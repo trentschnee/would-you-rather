@@ -52,12 +52,12 @@ class App extends React.Component {
                   <Route
                       exact
                       path="/questions/:id"
-                      component={QuestionPage}
+                      component={FourOFour}
                     />
                         <Route exact path="/login" component={LoginForm} />
                     <Route exact path="/leaderboard" component={LoginForm} />
                     <Route exact path="/add" component={LoginForm} />
-                    <Route exact path="/results/:id" component={LoginForm} />
+                    <Route exact path="/results/:id" component={FourOFour} />
                     <Route component={FourOFour} />
                   </Switch>
                 ) : (

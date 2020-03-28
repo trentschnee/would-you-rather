@@ -28,7 +28,7 @@ class Navbar extends React.Component {
     return isAuthed ? dispatch(handleLogout(userLogged)) : null;
   };
   render() {
-    const { classes, isAuthed,userLogged } = this.props;
+    const { classes, isAuthed,details } = this.props;
     return (
       <AppBar
         position="static"
@@ -80,7 +80,7 @@ class Navbar extends React.Component {
                 onClick={this.handleClick}
                 variant="outlined"
                 className={classes.link}
-              >{(isAuthed) ? `Logout as ${userLogged}` : "Login"}
+              >{(isAuthed) ? `Logout as ${details.name}` : "Login"}
                 
               </Button>
             </NavLink>
@@ -90,9 +90,12 @@ class Navbar extends React.Component {
     );
   }
 }
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser,users }) {
   //if the authed user is null, make the looking to true.
+ const details = users[authedUser]
+
+ console.log(authedUser, "info")
   const userLogged = authedUser !== null ? authedUser : null;
-  return { isAuthed: authedUser !== null, userLogged };
+  return { isAuthed: authedUser !== null, userLogged,details };
 }
 export default connect(mapStateToProps)(withStyles(useStyles)(Navbar));

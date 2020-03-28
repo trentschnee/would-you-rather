@@ -47,8 +47,8 @@ class Results extends Component {
     const vote1 = optionOne.votes.length;
     const vote2 = optionTwo.votes.length;
     const totalVotes = vote1 + vote2;
-    const vote1Ratio = ((vote1 / totalVotes) * 100).toFixed(1);
-    const vote2Ratio = ((vote2 / totalVotes) * 100).toFixed(1);
+    const vote1Ratio = parseFloat(((vote1 / totalVotes) * 100).toFixed(1));
+    const vote2Ratio = parseFloat(((vote2 / totalVotes) * 100).toFixed(1));
     if (question === null) {
       return <div>Error code 404: This question doesn't exist.</div>;
     } else {
