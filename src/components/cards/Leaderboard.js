@@ -1,20 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
 import { withStyles } from "@material-ui/core/styles";
 import {
   Grid,
-  GridList,
   Avatar,
   Paper,
   ButtonBase,
-  Button,
   Typography,
-  Radio,
-  FormControl,
-  FormLabel,
-  RadioGroup,
-  FormControlLabel
 } from "@material-ui/core";
 const useStyles = theme => ({
   paper: {
