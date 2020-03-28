@@ -35,9 +35,9 @@ const useStyles = theme => ({
 });
 class Results extends Component {
   render() {
-    const { classes, question, author, mauthedUserDetails, id } = this.props;
+    const { classes, question, author, id } = this.props;
     console.log(id);
-    const { avatarURL, name } = author;
+    const { avatarURL } = author;
     const authedID = this.props.authedUserDetails.id;
     
     const { optionOne, optionTwo } = question;
