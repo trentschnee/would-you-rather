@@ -25,11 +25,10 @@ const useStyles = theme => ({
 class Navbar extends React.Component {
   handleClick = e => {
     const { isAuthed, dispatch, userLogged } = this.props;
-    console.log(userLogged, "testnav");
     return isAuthed ? dispatch(handleLogout(userLogged)) : null;
   };
   render() {
-    const { classes, isAuthed } = this.props;
+    const { classes, isAuthed,userLogged } = this.props;
     return (
       <AppBar
         position="static"
@@ -81,9 +80,9 @@ class Navbar extends React.Component {
                 onClick={this.handleClick}
                 variant="outlined"
                 className={classes.link}
-              >
-                Logout{" "}
-              </Button>{" "}
+              >{(isAuthed) ? `Logout as ${userLogged}` : "Login"}
+                
+              </Button>
             </NavLink>
           </div>
         </Toolbar>

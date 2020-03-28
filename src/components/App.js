@@ -13,6 +13,7 @@ import QuestionPage from "./Question";
 import ResultsPage from "./Results";
 import NewQuestion from "./NewQuestion";
 import LoginForm from "./LoginForm";
+import FourOFour from "./404Page.js";
 const theme = createMuiTheme({
   palette: {
     type: "dark"
@@ -46,7 +47,19 @@ class App extends React.Component {
             <div className={classes.root}>
               <Container className={classes.cardGrid} maxWidth="md">
                 {this.props.isAuthed === false ? (
-                  <Route path="/" component={LoginForm} />
+                    <Switch>
+                  <Route exact path="/" component={LoginForm} />
+                  <Route
+                      exact
+                      path="/questions/:id"
+                      component={QuestionPage}
+                    />
+                        <Route exact path="/login" component={LoginForm} />
+                    <Route exact path="/leaderboard" component={LoginForm} />
+                    <Route exact path="/add" component={LoginForm} />
+                    <Route exact path="/results/:id" component={LoginForm} />
+                    <Route component={FourOFour} />
+                  </Switch>
                 ) : (
                   <Switch>
                     <Route exact path="/" component={Home}></Route>
@@ -58,6 +71,7 @@ class App extends React.Component {
                     <Route exact path="/leaderboard" component={Leaderboard} />
                     <Route exact path="/add" component={NewQuestion} />
                     <Route exact path="/results/:id" component={ResultsPage} />
+                    <Route component={FourOFour} />
                   </Switch>
                 )}
               </Container>

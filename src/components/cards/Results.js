@@ -50,7 +50,7 @@ class Results extends Component {
     const vote1Ratio = ((vote1 / totalVotes) * 100).toFixed(1);
     const vote2Ratio = ((vote2 / totalVotes) * 100).toFixed(1);
     if (question === null) {
-      return <div>This question doesn't exist.</div>;
+      return <div>Error code 404: This question doesn't exist.</div>;
     } else {
       return (
         <Grid item key={id} xs={7} sm={7} md={7}>
