@@ -25,9 +25,9 @@ function mapStateToProps({ users, authedUser }) {
         var totalScore = questionsAns + questionsAsked;
         return { ...userSel, questionsAns, questionsAsked, totalScore };
       })
-      .sort()
-      // TODO make the leadboard sort from higest to lowest
-      .reverse()
+      .sort((a,b)=>
+        b.totalScore - a.totalScore
+      )
   };
 }
 export default connect(mapStateToProps)(Leaderboard);
