@@ -42,7 +42,7 @@ class NewQuestion extends Component {
     this.setState({ optionOne: "", optionTwo: "", toHome: true });
   };
   render() {
-    const { id, classes } = this.props;
+    const { classes } = this.props;
     const { optionOne, optionTwo, toHome } = this.state;
     if (toHome === true) {
       return <Redirect to="/" />;
