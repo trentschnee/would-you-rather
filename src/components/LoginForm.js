@@ -49,11 +49,19 @@ class LoginForm extends Component {
     // takes in the target.value field from the event.
   };
   handleSubmit = e => {
+    e.preventDefault();
     const { selectedValue } = this.state;
-    const { dispatch, history } = this.props;
-    dispatch(handleLogin(selectedValue));
-    this.setState({ isAuthed: true });
-    history.push("/");
+    if (selectedValue !== 1){
+      const { dispatch, history } = this.props;
+      dispatch(handleLogin(selectedValue));
+      this.setState({ isAuthed: true });
+      history.push("/");
+    }
+    else{
+      alert("You must select a user to login.")
+    }
+
+
   };
 
   render() {
@@ -82,8 +90,7 @@ class LoginForm extends Component {
               <div>
                 <FormControl className={classes.formControl}>
                   <Select
-                    labelId="demo-customized-select-label"
-                    id="demo-customized-select"
+                   required
                     value={selectedValue}
                     onChange={this.handleChange}
                   >
