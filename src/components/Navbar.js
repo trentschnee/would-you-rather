@@ -17,7 +17,9 @@ const useStyles = theme => ({
   link: {
     margin: theme.spacing(1, 1.5),
     color: "#fff"
-  }
+  },
+  notActiveS: { fontWeight: "normal" },
+  activeS: { fontWeight: "bold" }
 });
 
 class Navbar extends React.Component {
@@ -50,7 +52,7 @@ class Navbar extends React.Component {
               exact
               to="/"
               className={classes.link}
-              activeStyle={isAuthed !== true && { fontWeight: "normal" }}
+              activeClassName={(isAuthed !== true) ? classes.notActiveS : classes.activeS}
             >
               Home
             </NavLink>
@@ -58,7 +60,7 @@ class Navbar extends React.Component {
               exact
               to="/leaderboard"
               className={classes.link}
-              activeStyle={isAuthed !== true && { fontWeight: "normal" }}
+              activeClassName={(isAuthed !== true) ? classes.notActiveS : classes.activeS}
             >
               Leaderboard
             </NavLink>
@@ -66,7 +68,7 @@ class Navbar extends React.Component {
               exact
               to="/add"
               className={classes.link}
-              activeStyle={isAuthed !== true && { fontWeight: "normal" }}
+              activeClassName={(isAuthed !== true) ? classes.notActiveS : classes.activeS}
             >
               New Question
             </NavLink>
