@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { handleInitialData } from "../actions/Shared";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import { Grid, Tabs, Tab, Paper, Typography, Box } from "@material-ui/core";
-//maybe make into helpers
 
 import Questionhome from "./cards/Questionhome";
 
