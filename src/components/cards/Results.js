@@ -101,7 +101,7 @@ class Results extends Component {
                         color="textSecondary"
                       >
                         {vote2} out of {totalVotes} votes
-                        {optionOneSelected === false && <div><Typography variant="caption">You selected this answer ✔</Typography></div>}
+                        {optionOneSelected === false && <Typography variant="caption">You selected this answer ✔</Typography>}
                       </Typography>
                     </div>
                   </Grid>
