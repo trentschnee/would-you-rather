@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, {Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { handleInitialData } from "../actions/Shared";
 import { connect } from "react-redux";
@@ -35,7 +35,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { classes, isAuthed } = this.props;
+    const { classes } = this.props;
     return (
       <Router>
         <ThemeProvider theme={theme}>

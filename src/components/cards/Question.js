@@ -1,17 +1,12 @@
 import React, { Component } from "react";
 import { handleAddAnswerToQuestion } from "../../actions/Questions";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import { Redirect } from "react-router-dom";
 
 import {
   Grid,
   Paper,
-  Card,
-  CardMedia,
-  CardContent,
-  CardActions,
   ButtonBase,
   Button,
   Typography,
@@ -49,7 +44,7 @@ class Question extends Component {
   submit = e => {
     e.preventDefault();
     const { selected } = this.state;
-    const { authedUserDetails, question, dispatch, id } = this.props;
+    const { authedUserDetails, question, dispatch } = this.props;
     dispatch(
       handleAddAnswerToQuestion(authedUserDetails.id, question.id, selected)
     );
@@ -59,7 +54,7 @@ class Question extends Component {
   render() {
     const { selected, toResults } = this.state;
 
-    const { classes, question, author, mauthedUserDetails, id } = this.props;
+    const { classes, question, author, id } = this.props;
     if (toResults === true) {
       return <Redirect to={`/results/${id}`} />;
     }

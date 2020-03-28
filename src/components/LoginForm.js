@@ -65,7 +65,7 @@ class LoginForm extends Component {
   };
 
   render() {
-    const { id, classes, users } = this.props;
+    const { classes, users } = this.props;
     const { selectedValue, toHome } = this.state;
     console.log(users, "<-users");
     if (toHome === true) {
