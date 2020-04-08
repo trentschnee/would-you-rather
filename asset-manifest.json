@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/would-you-rather/static/css/main.69e448f6.chunk.css",
-    "main.js": "/would-you-rather/static/js/main.504df52c.chunk.js",
-    "main.js.map": "/would-you-rather/static/js/main.504df52c.chunk.js.map",
+    "main.js": "/would-you-rather/static/js/main.364c648a.chunk.js",
+    "main.js.map": "/would-you-rather/static/js/main.364c648a.chunk.js.map",
     "runtime-main.js": "/would-you-rather/static/js/runtime-main.48ac087f.js",
     "runtime-main.js.map": "/would-you-rather/static/js/runtime-main.48ac087f.js.map",
     "static/js/2.34f39b99.chunk.js": "/would-you-rather/static/js/2.34f39b99.chunk.js",
     "static/js/2.34f39b99.chunk.js.map": "/would-you-rather/static/js/2.34f39b99.chunk.js.map",
     "index.html": "/would-you-rather/index.html",
-    "precache-manifest.be8c762d9115d6b014ebde90e319529f.js": "/would-you-rather/precache-manifest.be8c762d9115d6b014ebde90e319529f.js",
+    "precache-manifest.a95a558608f95bfb16dc1b41ab8a4a31.js": "/would-you-rather/precache-manifest.a95a558608f95bfb16dc1b41ab8a4a31.js",
     "service-worker.js": "/would-you-rather/service-worker.js",
     "static/css/main.69e448f6.chunk.css.map": "/would-you-rather/static/css/main.69e448f6.chunk.css.map",
     "static/js/2.34f39b99.chunk.js.LICENSE.txt": "/would-you-rather/static/js/2.34f39b99.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.48ac087f.js",
     "static/js/2.34f39b99.chunk.js",
     "static/css/main.69e448f6.chunk.css",
-    "static/js/main.504df52c.chunk.js"
+    "static/js/main.364c648a.chunk.js"
   ]
 }
